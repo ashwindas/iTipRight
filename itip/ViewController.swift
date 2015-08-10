@@ -30,6 +30,8 @@ class ViewController: UIViewController {
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        
+        billField.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,7 +50,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
+        // view.endEditing(true)
     }
     
     func calculateTip() {
