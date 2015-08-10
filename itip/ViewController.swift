@@ -22,6 +22,22 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    @IBOutlet weak var onePerson: UILabel!
+    
+    @IBOutlet weak var twoPeople: UILabel!
+    
+    @IBOutlet weak var threePeople: UILabel!
+    
+    @IBOutlet weak var fourPeople: UILabel!
+    
+    @IBOutlet weak var oneSplit: UILabel!
+    
+    @IBOutlet weak var twoSplit: UILabel!
+    
+    @IBOutlet weak var threeSplit: UILabel!
+    
+    @IBOutlet weak var fourSplit: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -30,6 +46,11 @@ class ViewController: UIViewController {
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        
+        onePerson.text = "😊"
+        twoPeople.text = "😊☺️"
+        threePeople.text = "😊☺️😀"
+        fourPeople.text = "😊☺️😀😃"
         
         billField.becomeFirstResponder()
     }
@@ -50,7 +71,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onTap(sender: AnyObject) {
-        // view.endEditing(true)
+        view.endEditing(true)
     }
     
     func calculateTip() {
@@ -63,6 +84,11 @@ class ViewController: UIViewController {
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+        
+        oneSplit.text = String(format: "$%.2f", total)
+        twoSplit.text = String(format: "$%.2f", total/2)
+        threeSplit.text = String(format: "$%.2f", total/3)
+        fourSplit.text = String(format: "$%.2f", total/4)
     }
     
     func getTipSettings() -> [Int] {
