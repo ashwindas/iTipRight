@@ -37,9 +37,9 @@ class SettingsViewController: UIViewController {
     func getTipSettings() -> [Int] {
         var tipSettings = [Int]()
         let defaults = NSUserDefaults.standardUserDefaults()
-        tipSettings.append(defaults.integerForKey("notHappyTipPercent"))
-        tipSettings.append(defaults.integerForKey("goodTipPercent"))
-        tipSettings.append(defaults.integerForKey("excellentTipPercent"))
+        tipSettings.append(defaults.integerForKey(TipCategory.NotHappy.rawValue))
+        tipSettings.append(defaults.integerForKey(TipCategory.Good.rawValue))
+        tipSettings.append(defaults.integerForKey(TipCategory.Excellent.rawValue))
         return tipSettings
     }
     
@@ -72,8 +72,7 @@ class SettingsViewController: UIViewController {
         defaults.synchronize()
     }
     
-    @IBAction func settingsChanged(sender: UITextField) {
-        
+    @IBAction func settingsChanging(sender: AnyObject) {
         let notHappyTipPercent = notHappyTipSettingsTextField.text
         tipSettingsSegmentedControl.setTitle("\(notHappyTipPercent)%", forSegmentAtIndex: 0)
         
@@ -82,17 +81,20 @@ class SettingsViewController: UIViewController {
         
         let excellentTipPercent = excellentTipSettingsTextField.text
         tipSettingsSegmentedControl.setTitle("\(excellentTipPercent)%", forSegmentAtIndex: 2)
+    }
+    
+    @IBAction func settingsChanged(sender: UITextField) {
         
         let defaults = NSUserDefaults.standardUserDefaults();
         
         if let notHappyTipPercentInt = notHappyTipSettingsTextField.text.toInt() {
-            defaults.setInteger(notHappyTipPercentInt, forKey: "notHappyTipPercent")
+            defaults.setInteger(notHappyTipPercentInt, forKey: TipCategory.NotHappy.rawValue)
         }
         if let goodTipPercentInt = goodTipSettingsTextField.text.toInt() {
-            defaults.setInteger(goodTipPercentInt, forKey: "goodTipPercent")
+            defaults.setInteger(goodTipPercentInt, forKey: TipCategory.Good.rawValue)
         }
         if let excellentTipPercentInt = excellentTipSettingsTextField.text.toInt() {
-            defaults.setInteger(excellentTipPercentInt, forKey: "excellentTipPercent")
+            defaults.setInteger(excellentTipPercentInt, forKey: TipCategory.Excellent.rawValue)
         }
         
         defaults.synchronize()

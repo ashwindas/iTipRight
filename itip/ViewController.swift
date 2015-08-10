@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum TipCategory : String {
+    case NotHappy = "notHappyTipPercent", Good = "goodTipPercent", Excellent = "excellentTipPercent"
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var tipLabel: UILabel!
@@ -62,9 +66,9 @@ class ViewController: UIViewController {
     func getTipSettings() -> [Int] {
         var tipSettings = [Int]()
         let defaults = NSUserDefaults.standardUserDefaults()
-        tipSettings.append(defaults.integerForKey("notHappyTipPercent"))
-        tipSettings.append(defaults.integerForKey("goodTipPercent"))
-        tipSettings.append(defaults.integerForKey("excellentTipPercent"))
+        tipSettings.append(defaults.integerForKey(TipCategory.NotHappy.rawValue))
+        tipSettings.append(defaults.integerForKey(TipCategory.Good.rawValue))
+        tipSettings.append(defaults.integerForKey(TipCategory.Excellent.rawValue))
         return tipSettings
     }
     
@@ -86,9 +90,9 @@ class ViewController: UIViewController {
         let tipSettingExists = defaults.boolForKey("tipSettingExists")
         if(!tipSettingExists) {
             // Nothing saved. Set default values.
-            defaults.setInteger(10, forKey: "notHappyTipPercent")
-            defaults.setInteger(15, forKey: "goodTipPercent")
-            defaults.setInteger(20, forKey: "excellentTipPercent")
+            defaults.setInteger(10, forKey: TipCategory.NotHappy.rawValue)
+            defaults.setInteger(15, forKey: TipCategory.Good.rawValue)
+            defaults.setInteger(20, forKey: TipCategory.Excellent.rawValue)
             defaults.setInteger(1, forKey: "tipSelected")
             defaults.setBool(true, forKey: "tipSettingExists")
         }
