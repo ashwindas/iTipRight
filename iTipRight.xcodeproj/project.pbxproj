@@ -13,6 +13,7 @@
 		3398F6131B75908200163875 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3398F6121B75908200163875 /* Images.xcassets */; };
 		3398F6161B75908200163875 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3398F6141B75908200163875 /* LaunchScreen.xib */; };
 		3398F6221B75908200163875 /* itipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398F6211B75908200163875 /* itipTests.swift */; };
+		33B1CF561B7845DD007C1959 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B1CF551B7845DD007C1959 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		3398F61B1B75908200163875 /* iTipRightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTipRightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3398F6201B75908200163875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3398F6211B75908200163875 /* itipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itipTests.swift; sourceTree = "<group>"; };
+		33B1CF551B7845DD007C1959 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				3398F60B1B75908200163875 /* AppDelegate.swift */,
 				3398F60D1B75908200163875 /* ViewController.swift */,
 				3398F60F1B75908200163875 /* Main.storyboard */,
+				33B1CF551B7845DD007C1959 /* SettingsViewController.swift */,
 				3398F6121B75908200163875 /* Images.xcassets */,
 				3398F6141B75908200163875 /* LaunchScreen.xib */,
 				3398F6091B75908200163875 /* Supporting Files */,
@@ -215,6 +218,7 @@
 			files = (
 				3398F60E1B75908200163875 /* ViewController.swift in Sources */,
 				3398F60C1B75908200163875 /* AppDelegate.swift in Sources */,
+				33B1CF561B7845DD007C1959 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

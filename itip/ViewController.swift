@@ -21,8 +21,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        checkDefaultTipSettings()
+        
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        checkTipSettings()
+        calculateTip()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,21 +40,60 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
-        
-        var tipPercentages = [0.15, 0.20, 0.25]
-        var tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
-        
-        var billAmount = billField.text._bridgeToObjectiveC().doubleValue
-        var tip = billAmount * tipPercentage
-        var total = billAmount + tip
-        
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
-        
+        calculateTip()
     }
 
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
+    
+    func calculateTip() {
+        var tipPercentages = getTipSettings()
+        var tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+        
+        var billAmount = billField.text._bridgeToObjectiveC().doubleValue
+        var tip = billAmount * Double(tipPercentage) / 100
+        var total = billAmount + tip
+        
+        tipLabel.text = String(format: "$%.2f", tip)
+        totalLabel.text = String(format: "$%.2f", total)
+    }
+    
+    func getTipSettings() -> [Int] {
+        var tipSettings = [Int]()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        tipSettings.append(defaults.integerForKey("notHappyTipPercent"))
+        tipSettings.append(defaults.integerForKey("goodTipPercent"))
+        tipSettings.append(defaults.integerForKey("excellentTipPercent"))
+        return tipSettings
+    }
+    
+    func checkTipSettings() {
+        // Check settings for the tip values
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let tipSelected = defaults.integerForKey("tipSelected")
+        tipControl.selectedSegmentIndex = tipSelected
+        
+        let tipSettings = getTipSettings()
+        tipControl.setTitle("\(tipSettings[0])%", forSegmentAtIndex: 0)
+        tipControl.setTitle("\(tipSettings[1])%", forSegmentAtIndex: 1)
+        tipControl.setTitle("\(tipSettings[2])%", forSegmentAtIndex: 2)
+    }
+    
+    func checkDefaultTipSettings() {
+        // Check settings for the tip values
+        let defaults = NSUserDefaults.standardUserDefaults();
+        let tipSettingExists = defaults.boolForKey("tipSettingExists")
+        if(!tipSettingExists) {
+            // Nothing saved. Set default values.
+            defaults.setInteger(10, forKey: "notHappyTipPercent")
+            defaults.setInteger(15, forKey: "goodTipPercent")
+            defaults.setInteger(20, forKey: "excellentTipPercent")
+            defaults.setInteger(1, forKey: "tipSelected")
+            defaults.setBool(true, forKey: "tipSettingExists")
+        }
+        defaults.synchronize()
+    }
+    
 }
 
