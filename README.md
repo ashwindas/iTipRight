@@ -16,4 +16,5 @@ Completed:
 ![demo/demo.gif](demo.gif)
 
 Works well with iPhone 5/5s only. Does not auto-layout for other sizes.
+
 Currently working on completing optional features.
