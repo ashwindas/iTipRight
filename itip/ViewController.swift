@@ -47,16 +47,17 @@ class ViewController: UIViewController {
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         
-        onePerson.text = "😊"
-        twoPeople.text = "😊☺️"
-        threePeople.text = "😊☺️😀"
-        fourPeople.text = "😊☺️😀😃"
+        onePerson.text = "👦"
+        twoPeople.text = "👦👧"
+        threePeople.text = "👦👧👨"
+        fourPeople.text = "👦👧👨👩"
         
         billField.becomeFirstResponder()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         checkTipSettings()
         calculateTip()
     }

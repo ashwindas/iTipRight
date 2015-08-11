@@ -2,7 +2,7 @@
 
 This is a Tip Calculator application for iOS submitted as the [pre-assignment](https://gist.github.com/timothy1ee/7747214) requirement for CodePath.
 
-Time spent: 8
+Time spent: 10
 
 Completed:
 
@@ -13,7 +13,6 @@ Completed:
 * [] Optional: Using locale-specific currency and currency thousands separators.
 * [x] Optional: Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
-![Video Walkthrough](name of your gif file.gif)
+![demo/demo.gif](demo.gif)
 
-Note: to embed the gif file, just check your gif file into your repo and update the name of the file above.
 Works well with iPhone 5/5s only. Does not auto-layout for other sizes.
